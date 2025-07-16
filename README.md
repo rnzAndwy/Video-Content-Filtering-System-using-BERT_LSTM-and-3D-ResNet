@@ -98,9 +98,9 @@ Download: [Python Official Download](https://www.python.org/downloads/)
 Ensure Python is added to PATH during installation  
 
 Node.js and npm
-Download: [Node.js Official Download](https://nodejs.org/)
-Download the LTS version (includes npm)
-Verify installation by running: node --version and npm --version
+Download: [Node.js Official Download](https://nodejs.org/)  
+Download the LTS version (includes npm)  
+Verify installation by running: node --version and npm --version  
 
 Anaconda  
 Download: [Anaconda Distribution](https://www.anaconda.com/products/distribution)  
