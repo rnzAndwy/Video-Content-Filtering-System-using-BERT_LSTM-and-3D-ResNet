@@ -6,15 +6,16 @@
 - [Contributing](#contributing)
 - 
 
-## [**Dataset**](#Dataset)
+## **Dataset**
 
 Profanity Dataset
 The Profanity Dataset consists of positive and negative samples for text-based profanity detection. The positive dataset, containing profanity examples, was sourced from multiple repositories to ensure comprehensive coverage:
 
-Profanity List by dsojevic: Community-maintained profanity collection
-CMU Bad Words List: Academic repository of inappropriate language
-List of Dirty, Naughty, Obscene Words from LDNOOBW: Extensive collection of obscene terms
-Kaggle Profanities in English Collection: Curated dataset from Kaggle community
+Profanity List by dsojevic: 
+- Community profanity collection
+- CMU Bad Words List
+- List of Dirty, Naughty, Obscene Words from LDNOOBW
+- Kaggle Profanities in English Collection
 
 The dataset includes both positive samples (containing profanity) and negative samples (clean text) to train a binary classification model. Files are provided in the repository for training and evaluation purposes.
 Kissing Dataset
