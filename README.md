@@ -87,9 +87,8 @@ FFmpeg
 Download: [FFmpeg Official](https://ffmpeg.org/download.html)  
 Essential for video processing operations  
 
-Environment Setup
-Setting System Environment Variables
-
+## **Environment Set-up**  
+**Setting System Environment Variables**
 Navigate to System Properties → Advanced → Environment Variables  
 Add the following paths to your PATH variable:    
 ```
@@ -111,7 +110,7 @@ Before proceeding, verify compatibility between your CUDA version and deep learn
 Option 1: Manual Environment Creation  
 Create virtual environment:  
 ```  
-bashconda create -n your_env python=3.10
+conda create -n your_env python=3.10
 conda activate your_env
 ```
 
@@ -144,20 +143,25 @@ pip install tqdm scikit-learn
 pip install moviepy
 ```
 
-Option 2: Automated Environment Setup (Recommended)
-Two automated options are provided for convenience:
+Option 2: Automated Environment Setup (Recommended)  
+Two automated options are provided for convenience:  
 
-Using YAML file:
-bashconda env create -f final_environment.yml
+Using YAML file:  
+```
+conda env create -f final_environment.yml
 conda activate content_moderation
+```
 
-Using batch file:
-bash# If conda is not initialized in your terminal
+Using batch file:  
+```
+# If conda is not initialized in your terminal
 conda init
 
 # Run the automated setup
 dev-start
-The dev-start.bat file will automatically create the environment with all necessary libraries installed and configured.
+```
+The dev-start.bat file will automatically create the environment with all necessary libraries installed and configured.  
+
 
 
 
