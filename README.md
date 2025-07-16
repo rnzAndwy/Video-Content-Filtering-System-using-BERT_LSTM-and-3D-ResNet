@@ -170,7 +170,7 @@ dev-start
 ```
 The dev-start.bat file will automatically create the environment with all necessary libraries installed and configured.  
 
-# **Application Setup**  
+# **Application Set-up**  
 Installing Node.js Dependencies  
 After setting up the Python environment, you need to install the Node.js dependencies for the Electron application:  
 
