@@ -5,7 +5,8 @@
 - [Usage](#usage)
 - [Contributing](#contributing)
 - 
-[**Dataset**](#Dataset)
+
+## [**Dataset**](#Dataset)
 
 Profanity Dataset
 The Profanity Dataset consists of positive and negative samples for text-based profanity detection. The positive dataset, containing profanity examples, was sourced from multiple repositories to ensure comprehensive coverage:
