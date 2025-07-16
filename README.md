@@ -4,6 +4,7 @@
 - [Algorithms](#Algorithms)
 - [Installation Guide](#Installation-Guide)
 - [Environment Set-up](#Environment-Set-up)
+- [Application Set-up](#Application-Set-up)
 - [Verification](#Verification)
 
 ## **Dataset** <br>
@@ -75,6 +76,11 @@ Python 3.10
 Download: [Python Official Download](https://www.python.org/downloads/)  
 Ensure Python is added to PATH during installation  
 
+Node.js and npm
+Download: [Node.js Official Download](https://nodejs.org/)
+Download the LTS version (includes npm)
+Verify installation by running: node --version and npm --version
+
 Anaconda  
 Download: [Anaconda Distribution](https://www.anaconda.com/products/distribution)  
 Provides package management and virtual environment capabilities  
@@ -98,6 +104,7 @@ C:\Users\[username]\anaconda3
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\libnvvp
 C:\ffmpeg\bin
+C:\Program Files\nodejs\
 ```
 Note: *Adjust paths according to your installation directories*  
 
@@ -162,6 +169,23 @@ conda init
 dev-start
 ```
 The dev-start.bat file will automatically create the environment with all necessary libraries installed and configured.  
+
+# **Application Setup**  
+Installing Node.js Dependencies  
+After setting up the Python environment, you need to install the Node.js dependencies for the Electron application:  
+
+Navigate to the project root directory:  
+```
+cd path/to/Video-Content-Filtering-System-using-BERT_LSTM-and-3D-ResNet
+```
+Install Node.js dependencies:  
+```
+npm install
+```
+Important Notes:  
+Do NOT run npm run build or npm build as this will package the entire system unnecessarily  
+Only run npm install to install the required node_modules  
+The node_modules folder and package.json are required for the Electron application to function properly  
 
 ## Verification  
 After installation, verify your set-up:  
