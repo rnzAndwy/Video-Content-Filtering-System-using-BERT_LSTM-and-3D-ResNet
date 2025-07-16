@@ -68,7 +68,7 @@ The kissing dataset was annotated [Here](cvat.ai)
 - Purpose: Temporal action detection in video sequences <br>
 - Features: Processes spatial and temporal information simultaneously <br>
 
-**Installation Guide**
+## **Installation Guide**
 Prerequisites  
 Python 3.10  
 Download: [Python Official Download](https://www.python.org/downloads/)  
