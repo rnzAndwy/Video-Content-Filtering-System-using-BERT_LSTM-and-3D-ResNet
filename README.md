@@ -54,7 +54,7 @@ kissing_dataset/
 
 Due to CVAT free tier limitations (maximum 5 videos per project), the dataset is organized into folders containing exactly 5 videos each with corresponding JSON annotations. This structure maximizes the use of available free annotation tools while maintaining organized data management.
 
-The kissing dataset was annotated [Here](cvat.ai)
+The kissing dataset was annotated [Here](https://www.cvat.ai/)
 
 ## **Algorithms**
 
