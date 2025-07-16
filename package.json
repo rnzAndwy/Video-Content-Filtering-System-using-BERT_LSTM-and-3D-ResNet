@@ -1,0 +1,75 @@
+{
+  "name": "vcfs",
+  "productName": "VCFS",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "VCFS Desktop Application",
+  "author": "",
+  "scripts": {
+    "start": "electron . --enable-logging",
+    "bundle-python": "node bundle.js",
+    "build": "npm run clean && npm run bundle-python && electron-builder --win portable",
+    "clean": "rimraf dist VCFS-win32-x64"
+  },
+  "devDependencies": {
+    "electron": "^32.1.0",
+    "electron-builder": "^25.1.8",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {
+    "python-shell": "^5.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "build": {
+    "appId": "com.vcfs.app",
+    "productName": "VCFS",
+    "icon": "icons/icon.ico",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!python-env/**/*",
+      "!tensorr/**/*",
+      "!**/*.{o,hprof,orig,pyc,pyo,rbc}",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*/.bin",
+      "!**/.git/**",
+      "!dist/**",
+      "!build/**",
+      "!*.spec",
+      "!*.spec.js"
+    ],
+    "extraResources": [
+      {
+        "from": "python-bundle",
+        "to": "python-bundle",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icons/icon.ico",
+      "signingHashAlgorithms": null,
+      "signAndEditExecutable": true,
+      "signDlls": false
+    },
+    "asar": true,
+    "asarUnpack": [
+      "python-bundle/**/*"
+    ],
+    "portable": {
+      "artifactName": "VCFS.exe"
+    },
+    "forceCodeSigning": false
+  }
+}

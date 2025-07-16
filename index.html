@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Video Content Filtering System</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./app/assets/all.min.css"/>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes scatteredRiseAndFade {
+    0% {
+        transform: translate(0, 100vh) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(1);
+        opacity: 0;
+    }
+}
+
+
+.opening-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #76b6c4, #235a6b, #7fcdff, #235a6b);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Keep this higher than menu's z-index */
+    color: var(--text-color);
+    text-align: center;
+    padding: 5vw;
+    overflow: hidden;
+}
+
+
+.circle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: scatteredRiseAndFade var(--duration) ease-out forwards;
+    will-change: transform, opacity;
+}
+
+.page-content.stream {
+    padding: 20px;
+    background: linear-gradient(135deg, #7fcdff, #235a6b);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-content.stream h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.page-content.video.active #video-output.show {
+    display: block !important;
+}
+
+.video-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.saved-videos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.video-thumbnail {
+    display: flex;
+    align-items: center;
+    background: #b6e4eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, #235a6b, #7fcdff);
+}
+
+.video-thumbnail video {
+    width: 120px;
+    height: 67.5px; /* 16:9 aspect ratio */
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.video-info {
+    flex-grow: 1;
+    min-width: 0; /* Required for text-overflow to work */
+    margin-right: 10px; /* Add space between text and buttons */
+}
+
+.video-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin: 0 0 5px 0;
+    color: rgb(0, 68, 99);
+    font-weight: thin;
+}
+
+.page-content.video {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#video-output {
+    display: none !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#video-player-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.85);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#video-player,
+#saved-video-player {
+    width: auto;
+    height: auto;
+    max-width: min(90vw, 1920px);
+    max-height: min(90vh, 1080px);
+    object-fit: contain;
+    display: block;
+    margin: 80px auto 0; /* Adjusted margin to move it slightly up */
+    filter: none; /* Ensure no brightness filter is applied */
+}
+
+.video-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 16 / 9;
+    max-height: calc(100vh - 200px);
+    z-index: 1;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 100%;
+}
+
+
+#filtered-video {
+    max-width: 100%;
+    max-height: calc(100vh - 200px);
+    margin: 0 auto;
+}
+
+
+#video-player {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+#close-video-player {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(to right, #235a6b, #7fcdff);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+#close-video-player:hover {
+    background-color: #3963a1;
+}
+
+/* Ensure the video maintains its aspect ratio */
+#saved-video-player {
+    width: 80%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  #close-video-player:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  #close-video-player i {
+    font-size: 16px;
+  }
+
+
+#saved-video-player::-webkit-media-controls-play-button,
+#saved-video-player::-webkit-media-controls-volume-slider,
+#saved-video-player::-webkit-media-controls-mute-button,
+#saved-video-player::-webkit-media-controls-timeline {
+    filter: brightness(1);
+}
+
+    </style>
+
+</head>
+<body>
+
+    <div id="opening-panel" class="opening-panel">
+        <div class="logo-container">
+            <img src="./images/gold.png" alt="VCFS Logo" class="logo">
+        </div>
+        <h1>VCFS: Video Content Filtering System</h1>
+        <p>Video Analysis Tool for Video Content Moderation</p>
+        <div class="button-container">
+            <button id="get-started-btn" class="panel-btn">Get Started</button>
+            <button id="about-us-btn" class="panel-btn">About Us</button>
+        </div>
+    </div>
+
+
+    <div id="about-us-dialog" class="dialog">
+        <div class="dialog-content">
+            <h2>About Us</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="./images/Akari.jpg" alt="Team Member 1">
+                    <h3>Akari Deamboy</h3>
+                    <p>Researcher/Technical Writer</p>
+                </div>
+                <div class="team-member">
+                    <img src="./images/profile.jpg" alt="Team Member 2">
+                    <h3>Renz Andrei Ibañez</h3>
+                    <p>Chief Programmer/Data Scientist</p>
+                </div>
+                <div class="team-member">
+                    <img src="./images/Myka.png" alt="Team Member 3">
+                    <h3>Myka Joyce Cadungog</h3>
+                    <p>Researcher/Technical Writer</p>
+                </div>
+            </div>
+            <p id="about-us-description">Our system helps content managers streamline the review process while working toward comprehensive content safety standards.</p>
+            <div class="button-container">
+                <button id="more-info-btn" class="panel-btn">More Info</button>
+                <button id="close-dialog-btn" class="panel-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!--DashBoard Menu-->
+    <section id="menu">
+        <button id="toggleMenu" class="toggle-btn"><i class="fas fa-chevron-left"></i></button>
+        <div class="logo">
+            <img src="./images/gold.png" alt="VCFS Logo">
+            <h2>VCFS</h2>
+        </div>
+
+        <div class="items">
+            <li><i class="fas fa-tachometer-alt"></i><a href="#" data-page="dashboard">Dashboard</a></li>
+            <li><i class="fas fa-video"></i><a href="#" data-page="video">Video</a></li>
+            <li><i class="fas fa-play-circle"></i><a href="#" data-page="stream">Stream</a></li>
+            <li><i class="fas fa-info-circle"></i><a href="#" data-page="info">Info</a></li>
+            <li><i class="fas fa-door-open"></i><a href="#" id="exit-btn">Exit</a></li>
+        </div>
+    </section>
+
+    
+
+    <section id="interface">
+        <div class="navigation">
+            <div class="n1">
+                <div class="user-profile">
+                    <div class="user">
+                        <i class="fas fa-user-circle"></i>
+                        <h3>Welcome, User!</h3>
+                    </div>
+                    <div class="profile">
+                        <i class="fas fa-lightbulb"></i>
+                        <img src="./images/profile.jpg" alt="user">
+                    </div>
+                </div>
+                
+                <div class="intro">
+                    <h2>Video Content Filtering System</h2>
+                    <p>Your all-in-one solution for analyzing and filtering video content. Follow the simple steps below to get started.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-content dashboard active" id="dashboard-content">
+            <div class="dashboard-content">
+                <div class="instructions">
+                    <div class="instruction-container">
+                        <div class="icon-circle">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <h4>Upload Video</h4>
+                        <p>Select and browse your video file here.</p>
+                    </div>
+                    <div class="instruction-container">
+                        <div class="icon-circle">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h4>Process Video</h4>
+                        <p>The system will analyze and filter the content.</p>
+                    </div>
+                    <div class="instruction-container">
+                        <div class="icon-circle">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h4>Download Result</h4>
+                        <p>Get your filtered video.</p>
+                    </div>
+                </div>
+
+                <div class="upload-section">
+                    <div class="upload-area">
+                        <input type="file" id="video-input" accept=".mp4" style="display: none;">
+                        <label for="video-input" class="upload-placeholder">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Upload Your Video</h3>
+                            <p> Click to browse your video file here to filter</p>
+                        </label>
+                        <div id="status-message"></div>
+                    </div>
+                    <button id="process-video-btn" class="process-btn" style="display: none;">
+                        <i class="fas fa-cogs"></i>
+                        Process Video
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="page-content video" id="video-content">
+            <h2>Video Menu</h2>
+            <div id="video-output" style="display: none;">
+                <div class="video-container">
+                    <video id="filtered-video" controls width="100%">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-controls">
+                    <button id="download-video-btn" class="control-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button id="save-video-btn" class="control-btn">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content stream" id="stream-content">
+            <h2>Saved Videos</h2>
+            <div id="saved-videos-container" class="video-grid">
+                <!-- Saved videos will be dynamically added here -->
+            </div>
+            
+            <div id="video-player-container" style="display: none;">
+                <video id="saved-video-player" controls></video>
+                <button id="close-video-player">Close Player</button>
+            </div>
+        </div>
+
+    
+
+    <div id="custom-popup" class="custom-popup">
+        <div class="popup-content">
+          <h2 id="popup-title"></h2>
+          <p id="popup-message"></p>
+          <button id="popup-close" class="popup-close">OK</button>
+        </div>
+    </div>
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoItems = document.querySelectorAll('.logo-item');
+            logoItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.animation = `floatUp 0.5s ease-out ${index * 0.2}s forwards`;
+                }, 500);
+            });
+        });
+    </script>
+
+    <script>
+        document.getElementById('about-us-btn').addEventListener('click', function() {
+            document.getElementById('about-us-dialog').style.display = 'flex';
+        });
+
+        document.getElementById('close-dialog-btn').addEventListener('click', function() {
+            document.getElementById('about-us-dialog').style.display = 'none';
+        });
+    </script>
+
+    <script>
+        function showPopup(title, message) {
+        const popup = document.getElementById('custom-popup');
+        const popupTitle = document.getElementById('popup-title');
+        const popupMessage = document.getElementById('popup-message');
+        const closeButton = document.getElementById('popup-close');
+    
+        popupTitle.textContent = title;
+        popupMessage.textContent = message;
+        popup.style.display = 'block';
+    
+        closeButton.onclick = function() {
+          popup.style.display = 'none';
+        };
+      }
+    </script>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

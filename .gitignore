@@ -1,0 +1,12 @@
+node_modules/
+BERT_LSTM/
+ResNet/
+ffmpeg/
+python-bundle/
+__pycache__/
+
+
+*.h5
+*.pth
+*.zip
+*.jar
