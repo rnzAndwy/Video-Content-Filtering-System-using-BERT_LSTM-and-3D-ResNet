@@ -38,25 +38,25 @@ The dataset was manually annotated based on a clear definition of "kissing" acti
 Access Dataset: [Kissing Dataset](https://huggingface.co/datasets/rnzandwy/Kissing_Dataset)
 
 Dataset Structure
-
+```
 kissing_dataset/
-
-├── Folder1/ <br>
-│   ├── Vid1.mp4 <br>
-│   ├── Vid2.mp4 <br>
-│   ├── Vid3.mp4 <br>
-│   ├── Vid4.mp4 <br>
-│   ├── Vid5.mp4 <br>
-│   └── Annotation.json <br>
+├── Folder1/ 
+│   ├── Vid1.mp4 
+│   ├── Vid2.mp4 
+│   ├── Vid3.mp4 
+│   ├── Vid4.mp4
+│   ├── Vid5.mp4 
+│   └── Annotation.json 
 
 ├── Folder2/ <br>
-│   ├── Vid1.mp4 <br>
-│   ├── Vid2.mp4 <br>
-│   ├── Vid3.mp4 <br>
-│   ├── Vid4.mp4 <br>
-│   ├── Vid5.mp4 <br>
-│   └── Annotation.json <br>
-└── ... <br>
+│   ├── Vid1.mp4 
+│   ├── Vid2.mp4 
+│   ├── Vid3.mp4 
+│   ├── Vid4.mp4 
+│   ├── Vid5.mp4 
+│   └── Annotation.json 
+└── ... 
+```
 
 Due to CVAT free tier limitations (maximum 5 videos per project), the dataset is organized into folders containing exactly 5 videos each with corresponding JSON annotations. This structure maximizes the use of available free annotation tools while maintaining organized data management.
 
