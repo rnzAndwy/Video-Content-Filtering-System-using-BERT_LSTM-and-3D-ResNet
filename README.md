@@ -22,16 +22,18 @@ The dataset includes both positive samples (containing profanity) and negative s
 
 **Kissing Dataset**
 
-The Kissing Scene Dataset was manually curated to ensure accuracy and relevance for video action recognition. The dataset consists of annotated video frames extracted from movie clips, with each video clip containing exactly 96 frames to maintain consistency.
-Positive samples: Annotated frames where 15% of the frames depict explicit kissing scenes
-Negative samples: Unannotated frames with no explicit romantic content
+The Kissing Scene Dataset was manually curated to ensure accuracy and relevance for video action recognition. The dataset consists of annotated video frames extracted from movie clips, with each video clip containing exactly 96 frames to maintain consistency. (Though this was already configured in the code)
+
+- Positive samples: Annotated frames where 15% of the frames depict explicit kissing scenes
+- Negative samples: Unannotated frames with no explicit romantic content
 
 Annotation Process:
+
 The dataset was manually annotated based on a clear definition of "kissing" action. However, several limitations may affect model performance:
-Limited diversity in samples (demographics, contexts, angles)
-Varying video quality across sources
-Inconsistent lighting conditions
-Cultural variations in romantic expressions
+- Limited diversity in samples (demographics, contexts, angles)
+- Varying video quality across sources
+- Inconsistent lighting conditions
+- Cultural variations in romantic expressions
 
 ## **Installation**
 Hi 
