@@ -1,6 +1,7 @@
 # Video-Content-Filtering-System-using-BERT_LSTM-and-3D-ResNet
 ## Table of Contents
 - [Dataset](#Dataset)
+- [Pre-trained Models](#Pre-trained-Models)
 - [Algorithms](#Algorithms)
 - [Installation Guide](#Installation-Guide)
 - [Environment Set-up](#Environment-Set-up)
@@ -17,6 +18,8 @@ The Profanity Dataset consists of positive and negative samples for text-based p
 
 The dataset includes both positive samples (containing profanity) and negative samples (clean text) to train a binary classification model. Files are provided in the repository for training and evaluation purposes.
 
+Access Dataset: [Profanity Dataset](https://huggingface.co/datasets/rnzandwy/Profanity_Dataset)
+
 
 **Kissing Dataset** <br>
 The Kissing Scene Dataset was manually curated to ensure accuracy and relevance for video action recognition. The dataset consists of annotated video frames extracted from movie clips, with each video clip containing exactly 96 frames to maintain consistency. (Though this was already configured in the code)
@@ -31,6 +34,8 @@ The dataset was manually annotated based on a clear definition of "kissing" acti
 - Varying video quality across sources
 - Inconsistent lighting conditions
 - Cultural variations in romantic expressions
+
+Access Dataset: [Kissing Dataset](https://huggingface.co/datasets/rnzandwy/Kissing_Dataset)
 
 Dataset Structure
 
@@ -57,6 +62,22 @@ Due to CVAT free tier limitations (maximum 5 videos per project), the dataset is
 
 The kissing dataset was annotated [Here](https://www.cvat.ai/)
 
+# **Pre-trained Models**  
+Pre-trained models are available for both profanity detection and kissing scene detection tasks.  
+Access Models: Pre-trained Models Repository  
+Model Structure
+```
+models/
+├── BERT_LSTM/
+│   ├── model files
+│   └── configuration files
+└── ResNet/
+    ├── model files
+    └── configuration files
+```
+Required Folder Names:  
+BERT_LSTM - Contains the trained BERT-LSTM model for profanity detection  
+ResNet - Contains the trained 3D ResNet model for kissing scene detection  
 
 ## **Algorithms**
 
