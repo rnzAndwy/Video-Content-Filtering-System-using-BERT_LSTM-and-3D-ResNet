@@ -3,7 +3,7 @@
 - [Dataset](#Dataset)
 - [Algorithms](#Algorithms)
 - [Installation Guide](#Installation-Guide)
-- [Contributing](#contributing)
+- [Environment Set-up](#Environment-Set-up)
 - 
 
 ## **Dataset** <br>
@@ -69,7 +69,7 @@ The kissing dataset was annotated [Here](cvat.ai)
 - Features: Processes spatial and temporal information simultaneously <br>
 
 ## **Installation Guide**
-Prerequisites  
+**Prerequisites**  
 Python 3.10  
 Download: [Python Official Download](https://www.python.org/downloads/)  
 Ensure Python is added to PATH during installation  
@@ -86,6 +86,21 @@ Required for GPU acceleration
 FFmpeg  
 Download: [FFmpeg Official](https://ffmpeg.org/download.html)  
 Essential for video processing operations  
+
+Environment Setup
+Setting System Environment Variables
+
+Navigate to System Properties → Advanced → Environment Variables  
+Add the following paths to your PATH variable:    
+```
+C:\Users\[username]\anaconda3\Scripts
+C:\Users\[username]\anaconda3
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\libnvvp
+C:\ffmpeg\bin
+```
+Note: *Adjust paths according to your installation directories*  
+
 
 
 
