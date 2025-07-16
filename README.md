@@ -101,6 +101,64 @@ C:\ffmpeg\bin
 ```
 Note: *Adjust paths according to your installation directories*  
 
+**CUDA Compatibility Check**  
+Before proceeding, verify compatibility between your CUDA version and deep learning frameworks:  
+[PyTorch](https://pytorch.org/get-started/locally/)  
+[TensorFlow](https://www.tensorflow.org/install/source#gpu)  
+
+
+**Setting up Anaconda Environment**  
+Option 1: Manual Environment Creation  
+Create virtual environment:  
+```  
+bashconda create -n your_env python=3.10
+conda activate your_env
+```
+
+Register kernel for Jupyter notebooks:  
+```
+conda install ipykernel
+python -m ipykernel install --user --name your_env --display-name "your_env"
+```
+
+Install required libraries:
+```
+# Deep Learning Frameworks
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+pip install tensorflow[and-cuda]
+
+# NLP Libraries
+pip install transformers tokenizers datasets
+
+# Computer Vision
+pip install opencv-python pillow
+
+# Data Processing
+pip install pandas numpy matplotlib seaborn
+
+# Jupyter and Development
+conda install jupyter notebook
+pip install tqdm scikit-learn
+
+# Video Processing
+pip install moviepy
+```
+
+Option 2: Automated Environment Setup (Recommended)
+Two automated options are provided for convenience:
+
+Using YAML file:
+bashconda env create -f final_environment.yml
+conda activate content_moderation
+
+Using batch file:
+bash# If conda is not initialized in your terminal
+conda init
+
+# Run the automated setup
+dev-start
+The dev-start.bat file will automatically create the environment with all necessary libraries installed and configured.
+
 
 
 
