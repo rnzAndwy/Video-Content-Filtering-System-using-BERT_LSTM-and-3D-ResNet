@@ -56,6 +56,7 @@ Due to CVAT free tier limitations (maximum 5 videos per project), the dataset is
 
 The kissing dataset was annotated [Here](https://www.cvat.ai/)
 
+
 ## **Algorithms**
 
 **Profanity Detection Model**  
