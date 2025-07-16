@@ -4,7 +4,7 @@
 - [Algorithms](#Algorithms)
 - [Installation Guide](#Installation-Guide)
 - [Environment Set-up](#Environment-Set-up)
-- 
+- [Verification](#Verification)
 
 ## **Dataset** <br>
 **Profanity Dataset** <br>
@@ -162,6 +162,21 @@ dev-start
 ```
 The dev-start.bat file will automatically create the environment with all necessary libraries installed and configured.  
 
+## Verification  
+After installation, verify your set-up:  
+```
+# Activate environment
+conda activate your_env
+
+# Check Python version
+python --version
+
+# Verify CUDA availability
+python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
+
+# Check TensorFlow GPU support
+python -c "import tensorflow as tf; print(f'GPU devices: {tf.config.list_physical_devices(\"GPU\")
+```
 
 
 
