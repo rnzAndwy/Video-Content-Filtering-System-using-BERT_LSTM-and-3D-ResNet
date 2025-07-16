@@ -150,7 +150,7 @@ Two automated options are provided for convenience:
 Using YAML file:  
 ```
 conda env create -f final_environment.yml
-conda activate content_moderation
+conda activate tensorr1 # tensorr1 was the name of the environment 
 ```
 
 Using batch file:  
