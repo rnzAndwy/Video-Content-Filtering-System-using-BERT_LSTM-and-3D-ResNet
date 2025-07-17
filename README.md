@@ -64,7 +64,12 @@ The kissing dataset was annotated [Here](https://www.cvat.ai/)
 
 # **Pre-trained Models**  
 Pre-trained models are available for both profanity detection and kissing scene detection tasks.  
-Access Models: Pre-trained Models Repository  
+
+Access Models:  
+
+[Profanity Detection Model](https://huggingface.co/rnzandwy/BERT_LSTM_Profanity)  
+[Kissing Detection Model](https://huggingface.co/rnzandwy/3D_ResNet)  
+
 Model Structure
 ```
 models/
