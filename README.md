@@ -84,7 +84,7 @@ Required Folder Names:
 BERT_LSTM - Contains the trained BERT-LSTM model for profanity detection  
 ResNet - Contains the trained 3D ResNet model for kissing scene detection  
 
-**Training Pipeline and Annotations**
+**Training Pipeline and Annotations**  
 If you want to examine the annotations and explore the training pipeline:  
 1. Navigate to the training_pipeline folder in the repository  
 2. Open the relevant Jupyter notebooks for the model you're interested in  
