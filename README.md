@@ -209,6 +209,19 @@ dev-start
 ```
 The dev-start.bat file will automatically create the environment with all necessary libraries installed and configured.  
 
+If running dev-start.bat doesn’t work on your system, follow Option 1 to manually set up the environment and run the project.  
+Name of the environment: Tensorr1 (You may change this to whatever you want, Kindly edit the final_environment Yaml file)  
+
+Still not working?
+Check that:
+- [Prerequisites](#Prerequisites)
+- You have Python, Node.js, FFmpeg and Conda installed correctly
+- Pathing of System Variables is done correctly
+- Your environment is activated before running the project
+- You installed all necessary dependencies 
+
+
+
 # **Application Set-up**  
 Installing Node.js Dependencies  
 After setting up the Python environment, you need to install the Node.js dependencies for the Electron application:  
