@@ -213,8 +213,8 @@ If running dev-start.bat doesn’t work on your system, follow Option 1 to manua
 Name of the environment: Tensorr1 (You may change this to whatever you want, Kindly edit the final_environment Yaml file)  
 
 Still not working?
-Check that:
-- [Prerequisites](#Prerequisites)
+Check:
+- [Installation Guide](#Installation-Guide)
 - You have Python, Node.js, FFmpeg and Conda installed correctly
 - Pathing of System Variables is done correctly
 - Your environment is activated before running the project
