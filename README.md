@@ -111,25 +111,25 @@ This allows you to:
 
 ## **Installation Guide**
 **Prerequisites**  
-Python 3.10  
+*Python 3.10*  
 Download: [Python Official Download](https://www.python.org/downloads/)  
 Ensure Python is added to PATH during installation  
 
-Node.js and npm
+*Node.js and npm*
 Download: [Node.js Official Download](https://nodejs.org/)  
 Download the LTS version (includes npm)  
 Verify installation by running: node --version and npm --version  
 
-Anaconda  
+*Anaconda*  
 Download: [Anaconda Distribution](https://www.anaconda.com/products/distribution)  
 Provides package management and virtual environment capabilities  
 
-CUDA Toolkit & NVIDIA Drivers  
+*CUDA Toolkit & NVIDIA Drivers*  
 Download: [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads)  
 Download: [NVIDIA Drivers](https://www.nvidia.com/drivers/)  
 Required for GPU acceleration  
 
-FFmpeg  
+*FFmpeg*  
 Download: [FFmpeg Official](https://ffmpeg.org/download.html)  
 Essential for video processing operations  
 
